@@ -1,0 +1,16 @@
+tetris
+main
+*.exe
+
+*.dsym
+
+*.o
+
+/build/
+/dist/
+/out/
+
+.DS_Store
+
+.idea/
+.vscode/

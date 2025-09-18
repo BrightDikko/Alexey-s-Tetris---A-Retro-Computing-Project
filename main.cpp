@@ -1,25 +1,29 @@
 #include <raylib.h>
-#include "grid.h"
+#include "game.h"
 
-int main()
-{
+int main() {
     Color darkBlue = {44, 44, 127, 255};
-    InitWindow(300, 600, "Tetris");
+    InitWindow(700, 640, "Alexey's Tetris");
     SetTargetFPS(60);
 
-    Grid grid = Grid();
-    grid.grid[0][0] = 1;
-    grid.grid[3][5]=4; 
-    grid.grid[17][8] =7;
-    grid.Print();
-    
-    while (WindowShouldClose() == false){
+    Game game;
+    static double lastUpdateTime = 0.0;
+
+    while (!WindowShouldClose()) {
+        game.HandlePlayerInput();
+
+        double now = GetTime();
+        if (now - lastUpdateTime >= game.GetFallIntervalSeconds()) {
+            lastUpdateTime = now;
+            game.StepGravity();
+        }
+
         BeginDrawing();
         ClearBackground(darkBlue);
-        grid.Draw();
-        
+        game.RenderGame();
         EndDrawing();
     }
 
     CloseWindow();
+    return 0;
 }

@@ -4,7 +4,7 @@ INCLUDES = -I/opt/homebrew/include
 LDFLAGS = -L/opt/homebrew/lib
 LDLIBS = -lraylib -framework Cocoa -framework IOKit -framework CoreVideo -framework OpenGL
 
-SRC = main.cpp grid.cpp
+SRC = main.cpp grid.cpp tetrominoes.cpp game.cpp
 OBJ = $(SRC:.cpp=.o)
 TARGET = tetris
 
